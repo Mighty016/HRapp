@@ -1,0 +1,71 @@
+<Page navigatingTo="onNavigatingTo" loaded="onLoaded" 
+    xmlns="http://schemas.nativescript.org/tns.xsd" 
+    xmlns:Card="@nstudio/nativescript-cardview">
+
+    <ActionBar class="action-bar">
+        <!-- 
+        Use the NavigationButton as a side-drawer button in Android
+        because ActionItems are shown on the right side of the ActionBar
+        -->
+        <NavigationButton ios:visibility="collapsed" icon="res://menu" tap="onDrawerButtonTap"></NavigationButton>
+        <!-- 
+        Use the ActionItem for IOS with position set to left. Using the
+        NavigationButton as a side-drawer button in iOS is not possible,
+        because its function is to always navigate back in the application.
+        -->
+        <ActionItem icon="res://navigation/menu" android:visibility="collapsed" tap="onDrawerButtonTap" ios.position="left">
+        </ActionItem>
+        <Label class="action-bar-title" text="Leave List"></Label>
+    </ActionBar>
+
+    <TabView id='tb'>
+        <TabView.items>
+            <TabViewItem title="Pending">
+                <TabViewItem.view>
+                    <GridLayout rows="auto,*">
+                        <Card:CardView radius="0" elevation="8">
+                            <GridLayout row="0" rows="auto,auto" columns="2*,2*,2*" style="padding-top:5;padding-bottom:5;background-color:#DCDCDC;color: #000000">
+                                <Label row="0" col="0" text="Type:" textWrap="true" style="font-weight: bold" horizontalAlignment="center"/>
+                                <Label row="0" col="1" text="Name:" textWrap="true" style="font-weight: bold" horizontalAlignment="center"/>
+                                <Label row="0" col="2" text="Date:" textWrap="true" style="font-weight: bold" horizontalAlignment="center"/>
+                            </GridLayout>
+                        </Card:CardView>
+                        <ListView row="1" id='pending' items="{{ pending }}" itemTap="onItemTap">
+                            <ListView.itemTemplate>
+                                <GridLayout rows="auto,auto" columns="2*,2*,2*" style="padding: 10">
+                                    <Label row="0" col="0" rowSpan="2" text="{{leavetype}}" textWrap="true" horizontalAlignment="left"/>
+                                    <Label row="0" col="1" text="{{staff_name}}" textWrap="true" horizontalAlignment="center"/>
+                                    <Label row="0" col="2" text="{{dateend === datefrom ? datefrom : 'Start: ' + datefrom}}" textWrap="true" horizontalAlignment="right"/>
+                                    <Label row="1" col="2" text="{{'End: ' + dateend}}" visibility="{{dateend === datefrom ? 'collapsed' : 'visible'}}" textWrap="true" horizontalAlignment="right"/>
+                                </GridLayout>
+                            </ListView.itemTemplate>
+                        </ListView>
+                    </GridLayout>
+                </TabViewItem.view>
+            </TabViewItem>
+            <TabViewItem title="Approved">
+                <TabViewItem.view>
+                    <GridLayout rows="auto,*">
+                        <Card:CardView radius="0" elevation="8">
+                            <GridLayout row="0" rows="auto,auto" columns="2*,2*,2*" style="padding-top:5;padding-bottom:5;background-color:#DCDCDC;color: #000000">
+                                <Label row="0" col="0" text="Type:" textWrap="true" style="font-weight: bold" horizontalAlignment="center"/>
+                                <Label row="0" col="1" text="Name:" textWrap="true" style="font-weight: bold" horizontalAlignment="center"/>
+                                <Label row="0" col="2" text="Date:" textWrap="true" style="font-weight: bold" horizontalAlignment="center"/>
+                            </GridLayout>
+                        </Card:CardView>
+                        <ListView row="1" id='approved' items="{{ approved }}" itemTap="onItemTap">
+                            <ListView.itemTemplate>
+                                <GridLayout rows="auto,auto" columns="2*,2*,2*" style="padding: 10">
+                                    <Label row="0" col="0" rowSpan="2" text="{{leavetype}}" textWrap="true" horizontalAlignment="left"/>
+                                    <Label row="0" col="1" text="{{staff_name}}" textWrap="true" horizontalAlignment="center"/>
+                                    <Label row="0" col="2" text="{{dateend === datefrom ? datefrom : 'Start: ' + datefrom}}" textWrap="true" horizontalAlignment="right"/>
+                                    <Label row="1" col="2" text="{{'End: ' + dateend}}" visibility="{{dateend === datefrom ? 'collapsed' : 'visible'}}" textWrap="true" horizontalAlignment="right"/>
+                                </GridLayout>
+                            </ListView.itemTemplate>
+                        </ListView>
+                    </GridLayout>
+                </TabViewItem.view>
+            </TabViewItem>
+        </TabView.items>
+    </TabView>
+</Page>

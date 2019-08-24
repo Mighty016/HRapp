@@ -1,0 +1,27 @@
+<Page loaded="pageLoaded" class="page" actionBarHidden="true">
+    <ScrollView class="page">
+        <StackLayout class="form">
+            <Image class="logo" src="res://icon" />
+            <Label class="header" text="HRapp" />
+
+            <GridLayout rows="auto, auto">
+                <StackLayout row="0" class="input-field">
+                    <TextField text="{{ username}}" class="input" hint="Username" keyboardType="email" autocorrect="false" autocapitalizationType=
+                        "none" returnKeyType="next" />
+                    <Label class="hr-light" />
+                </StackLayout>
+
+                <StackLayout row="1" class="input-field">
+                    <TextField text="{{password}}" id="password" class="input" hint="Password" secure="true" returnKeyType="done" autocorrect=
+                    "false" autocapitalizationType="none" />
+                    <Label class="hr-light" />
+                </StackLayout>
+
+                <ActivityIndicator busy="{{loading}}" id="buffer"></ActivityIndicator>
+            </GridLayout>
+
+            <Button text="Login" isEnabled="{{ !loading }}" tap="{{login}}" class="btn btn-primary btn-active m-t-20" />
+            
+        </StackLayout>
+    </ScrollView>
+</Page>

@@ -1,0 +1,13 @@
+.ApplyButton {
+    background-color: #3d5afe;
+    color: white;
+}
+
+.ApplyButton:active {
+    background-color: #0724ff;
+}
+
+.ApplyButton:disabled {
+    background-color: #e0e0e0;
+    color: #a4a4a4
+}

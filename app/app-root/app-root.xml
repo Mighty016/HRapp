@@ -1,0 +1,68 @@
+<!--
+RadSideDrawer is a UI component part of the Progress NativeScript UI set of components.
+Learn more about the RadSideDrawer UI component and how it can be customized in this documentation article:
+https://docs.nativescript.org/ui/professional-ui-components/SideDrawer/getting-started
+-->
+<nsDrawer:RadSideDrawer id="sideDrawer" 
+    xmlns:nsDrawer="nativescript-ui-sidedrawer" 
+    xmlns:RL="nativescript-ripple" loaded="onLoaded">
+    <nsDrawer:RadSideDrawer.drawerTransition>
+        <nsDrawer:SlideInOnTopTransition/>
+    </nsDrawer:RadSideDrawer.drawerTransition>
+
+    <nsDrawer:RadSideDrawer.drawerContent>
+        <GridLayout rows="auto, *" class="sidedrawer sidedrawer-left">
+            <StackLayout class="sidedrawer-header">
+                <Label class="sidedrawer-header-image fa" text="&#xf2bd;" />
+                <Label class="sidedrawer-header-brand" text="{{name}}" />
+                <Label class="footnote" text="{{pos}}" />
+            </StackLayout>
+
+            <ScrollView row="1" class="sidedrawer-content">
+                <StackLayout>
+                    <RL:Ripple rippleColor="#A9A9A9" route="home/home-page" title="Home" tap="onNavigationItemTap">
+                        <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Home' ? ' selected': '') }}">
+                            <Label row="0" col="0" text="&#xf015;" class="fa" />
+                            <Label row="0" col="1" text="Home" class="p-r-10" />
+                        </GridLayout>
+                    </RL:Ripple>
+
+                    <RL:Ripple rippleColor="#A9A9A9" route="apply-leave/apply-leave" title=
+                    "Apply Leave" tap="onNavigationItemTap" visibility="{{pos === 'Boss' ? 'collapsed' : 'visible'}}">
+                        <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Apply Leave' ? ' selected': '') }}">
+                            <Label row="0" col="0" text="&#xf1d8;" class="fa" />
+                            <Label row="0" col="1" text="Apply Leave" class="p-r-10" />
+                        </GridLayout>
+                    </RL:Ripple>
+
+                    <RL:Ripple rippleColor="#A9A9A9" route="leave/leave-page" title="Leave List" tap="onNavigationItemTap">
+                        <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Leave List' ? ' selected': '') }}">
+                            <Label row="0" col="0" text="&#xf15c;" class="fa" />
+                            <Label row="0" col="1" text="Leave List" class="p-r-10" />
+                        </GridLayout>
+                    </RL:Ripple>
+
+                    <RL:Ripple rippleColor="#A9A9A9"  route="calendar/calendar" title="Calendar" tap="onNavigationItemTap">
+                        <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Calendar' ? ' selected': '') }}">
+                            <Label row="0" col="0" text="&#xf073;" class="fa" />
+                            <Label row="0" col="1" text="Calendar" class="p-r-10" />
+                        </GridLayout>
+                    </RL:Ripple>
+
+                    <StackLayout class="hr-light"></StackLayout>
+
+                    <RL:Ripple rippleColor="#A9A9A9" route="settings/settings-page" title="Settings" tap="onNavigationItemTap">
+                        <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Settings' ? ' selected': '') }}">
+                            <Label row="0" col="0" text="&#xf013;" class="fa" />
+                            <Label row="0" col="1" text="Settings" class="p-r-10" />
+                        </GridLayout>
+                    </RL:Ripple>
+                </StackLayout>
+            </ScrollView>
+        </GridLayout>
+    </nsDrawer:RadSideDrawer.drawerContent>
+
+    <nsDrawer:RadSideDrawer.mainContent>
+        <Frame defaultPage="{{ hasData ? 'home/home-page' : 'login/login-page'}}"></Frame>
+    </nsDrawer:RadSideDrawer.mainContent>
+</nsDrawer:RadSideDrawer>

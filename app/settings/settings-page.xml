@@ -1,0 +1,40 @@
+<Page navigatingTo="onNavigatingTo" 
+    xmlns="http://schemas.nativescript.org/tns.xsd" 
+    xmlns:RL="nativescript-ripple">
+
+    <ActionBar class="action-bar">
+        <!-- 
+        Use the NavigationButton as a side-drawer button in Android
+        because ActionItems are shown on the right side of the ActionBar
+        -->
+        <NavigationButton ios:visibility="collapsed" icon="res://menu" tap="onDrawerButtonTap"></NavigationButton>
+        <!-- 
+        Use the ActionItem for IOS with position set to left. Using the
+        NavigationButton as a side-drawer button in iOS is not possible,
+        because its function is to always navigate back in the application.
+        -->
+        <ActionItem icon="res://navigation/menu" android:visibility="collapsed" tap=
+        "onDrawerButtonTap" ios.position="left"></ActionItem>
+        <Label class="action-bar-title" text="Settings"></Label>
+    </ActionBar>
+    <ScrollView>
+        <StackLayout>
+            <Label class="labelSetting" text="Change password" style="padding-top: 10;padding-bottom: 20;" />
+            <GridLayout style="width: 70%" rows="40,40,40,60">
+                <TextField row="0" hint="Current Password" text="{{ currentPswd }}" secure="true" autocorrect="false" autocapitalizationType="none"/>
+                <TextField row="1" hint="New Password" text="{{ newPswd }}" secure="true" autocorrect="false" autocapitalizationType="none"/>
+                <TextField row="2" hint="Confirm Password" text="{{ confirmPswd }}" secure="true" autocorrect="false" autocapitalizationType="none"/>
+                <Button row="3" text="Change" class="btn btn-primary btn-active" tap="changePassword" isEnabled="{{!busy}}"/>
+                <ActivityIndicator row="1" busy="{{busy}}" id="buffer"></ActivityIndicator>
+            </GridLayout>
+            <Label class="hr-light"/>
+            <RL:Ripple rippleColor="#A9A9A9" tap="logout">
+                <GridLayout rows="55" columns="auto,auto">
+                    <Label text="&#xf08b;" class="fa labelSetting" style="font-size: 30;" row="0" col="0"/>
+                    <Label text="Log Out" class="labelSetting" style="padding-left: 10;" row="0" col="1"/>
+                </GridLayout>
+            </RL:Ripple>
+            <Label class="hr-light"/>
+        </StackLayout>
+    </ScrollView>
+</Page>

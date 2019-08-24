@@ -1,0 +1,58 @@
+<Page class="page" navigatingTo="onNavigatingTo" 
+    xmlns="http://schemas.nativescript.org/tns.xsd" 
+    xmlns:Card="@nstudio/nativescript-cardview">
+
+    <ActionBar class="action-bar">
+        <!-- 
+        Use the NavigationButton as a side-drawer button in Android
+        because ActionItems are shown on the right side of the ActionBar
+        -->
+        <NavigationButton ios:visibility="collapsed" icon="res://menu" tap="onDrawerButtonTap"></NavigationButton>
+        <!-- 
+        Use the ActionItem for IOS with position set to left. Using the
+        NavigationButton as a side-drawer button in iOS is not possible,
+        because its function is to always navigate back in the application.
+        -->
+        <ActionItem icon="res://navigation/menu" android:visibility="collapsed" tap="onDrawerButtonTap" ios.position="left">
+        </ActionItem>
+        <Label class="action-bar-title" text="Apply Leave"></Label>
+    </ActionBar>
+
+    <ScrollView>
+        <FlexboxLayout style="background-color:#eff2f7;" flexDirection="column" justifyContent="space-between">
+            <Card:CardView margin="20" elevation="20" radius="0">
+                <grid-layout style="padding: 20" rows="auto, auto, auto,auto,auto">
+                    <StackLayout row="0" paddingBottom="13">
+                        <Label text="Type of leave" textWrap="true" fontSize="13" fontWeight="bold" />
+                        <TextField editable="false" text="{{ selected.leavetype }}" tap=
+                        "chooseLeaveType" fontSize="17"/>
+                    </StackLayout>
+
+                    <StackLayout row="1" paddingBottom="13">
+                        <Label text="Reason" textWrap="true" fontSize="13" fontWeight="bold" />
+                        <TextField hint="" text="{{ reason }}" fontSize="17"/>
+                    </StackLayout>
+
+                    <StackLayout row="2" paddingBottom="13">
+                        <Label text="From" textWrap="true" fontSize="13" fontWeight="bold" />
+                        <StackLayout orientation="horizontal">
+                            <Button style="background-color: white;color: #3d5afe;" id='datefrom' text="{{ datefrom }}" tap="onChooseDate" />
+                            <Button style="background-color: white;color: #3d5afe" id='halfday1' text="{{ halfday1.name }}" tap="onChooseLeaveDuration" />
+                        </StackLayout>
+                    </StackLayout>
+
+                    <StackLayout row="3" paddingBottom="22">
+                        <Label text="To" textWrap="true" fontSize="13" fontWeight="bold" />
+                        <StackLayout orientation="horizontal">
+                            <Button style="background-color: white;color: #3d5afe" id='dateend' text="{{ dateend }}" tap="onChooseDate" />
+                            <Button style="background-color: white;color: #3d5afe" id='halfday2' text="{{ halfday2.name}}" tap="onChooseLeaveDuration" />
+                        </StackLayout>
+                    </StackLayout>
+                    <ActivityIndicator row="2" height="65" busy="{{busy}}" id="buffer"></ActivityIndicator>
+                    <Button class="ApplyButton" text="Apply Leave" tap="onApplyLeave" row="4" isEnabled="{{!busy}}"/>
+                </grid-layout>
+            </Card:CardView>
+            <Image src="~/apply-leave/apply.png"/>
+        </FlexboxLayout>
+    </ScrollView>
+</Page>

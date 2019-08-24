@@ -1,0 +1,39 @@
+<Page class="page" navigatingTo="onNavigatingTo" 
+    xmlns="http://schemas.nativescript.org/tns.xsd" 
+    xmlns:Card="@nstudio/nativescript-cardview" 
+    xmlns:RL="nativescript-ripple">
+
+    <ActionBar class="action-bar">
+        <!-- 
+        Use the NavigationButton as a side-drawer button in Android
+        because ActionItems are shown on the right side of the ActionBar
+        -->
+        <NavigationButton ios:visibility="collapsed" icon="res://menu" tap="onDrawerButtonTap"></NavigationButton>
+        <!-- 
+        Use the ActionItem for IOS with position set to left. Using the
+        NavigationButton as a side-drawer button in iOS is not possible,
+        because its function is to always navigate back in the application.
+        -->
+        <ActionItem icon="res://navigation/menu" android:visibility="collapsed" tap="onDrawerButtonTap" ios.position="left">
+        </ActionItem>
+        <Label class="action-bar-title" text="Home"></Label>
+    </ActionBar>
+
+    <ScrollView>
+        <StackLayout class="page-content " style="background-color: #eff2f7;">
+            <GridLayout rows="auto">
+                <Image src="~/home/b.png" row='0' />
+                <Label class="welcome-text" text="{{'Welcome ' + username + '!'}}" row='0'></Label>
+            </GridLayout>
+            <Card:CardView class="cardStyle" margin="30" elevation="13" radius="30">
+                <RL:Ripple rippleColor="#ffffff" tap="link">
+                    <stack-layout rows="200">
+                        <Label class="text-center p-t-20" text="{{'Leave balance for year ' + year + ':'}}" row='0'></Label>
+                        <Label class="text-center " text="{{leave}}" style="font-size: 72;" ></Label>
+                        <Label class="text-center p-b-20 " text="Days" style="font-size: 30;" ></Label>
+                    </stack-layout>
+                </RL:Ripple>
+            </Card:CardView>
+        </StackLayout>
+    </ScrollView>
+</Page>

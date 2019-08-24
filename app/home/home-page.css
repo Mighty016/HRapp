@@ -1,0 +1,15 @@
+
+.welcome-text {
+    color: black;
+    font-size: 18;
+    text-align: center;
+    padding: 20;
+    font-weight: bold;
+}
+
+.cardStyle {
+    background-color: #3A53FF;
+    color: #fff;
+    width: 70%;
+}
+
