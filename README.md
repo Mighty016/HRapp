@@ -23,3 +23,4 @@ Dev Dependencies:
 │ nativescript-dev-webpack │ ~1.0.0  │
 │ node-sass                │ ^4.7.1  │
 └──────────────────────────┴─────────┘
+ test
