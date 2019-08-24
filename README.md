@@ -3,7 +3,7 @@ HR app for  dynaconsurv
 made using nativescript js
 
 Dependencies:
-┌───────────────────────────────────┬─────────┐
+┌───────────────────────────────────┬─────────┐\n
 │ Plugin                            │ Version │
 │ @nstudio/nativescript-cardview    │ ^1.0.0  │
 │ nativescript-modal-datetimepicker │ ^1.2.0  │
@@ -23,4 +23,4 @@ Dev Dependencies:
 │ nativescript-dev-webpack │ ~1.0.0  │
 │ node-sass                │ ^4.7.1  │
 └──────────────────────────┴─────────┘
- test
+ 
